@@ -27,6 +27,12 @@ public class Customer_Management {
 	}
 
 
+	public Customer_Management(String em) {
+		
+		this.email=em;
+	}
+
+
 	public static int getCustid() {
 		return custid;
 	}
@@ -118,9 +124,11 @@ public class Customer_Management {
     @Override
     public boolean equals(Object o)
     {
+       System.out.println("In customer equals");
+       Customer_Management cust=(Customer_Management)o;
        if(o instanceof Customer_Management)
        {
-          return this.email == ((Customer_Management) o).email;   
+          return this.email.equals(cust.email) ; 
        }
        return false; 	
     }

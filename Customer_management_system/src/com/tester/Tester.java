@@ -1,10 +1,12 @@
 package com.tester;
 
-import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import static com.utils.ValidationRules.validateInput;
+import static com.utils.ValidationRules.loginValidation;
 
 import com.customer_management_system.Customer_Management;
-import com.customer_management_system.ServicePlans;
 
 public class Tester {
 
@@ -14,26 +16,40 @@ public class Tester {
 		{
 			
 			System.out.println("Enter number of customer");
-			Customer_Management[] cs=new Customer_Management[sc.nextInt()];
+			List<Customer_Management> cs=new ArrayList<>();
 			boolean exit=false;
 			while(!exit)
 			{
+			  System.out.println("1.Registration(Sign Up) /n 2.Login /n 3.Display plne /n .Exit");
+			  System.out.println("Enter your choice");
 			  try
 			  {
-			  System.out.println("1.Sign up /n 2.Exit");
-			  System.out.println("Enter your choice");
 			   switch(sc.nextInt())
 			   {
 			   case 1:
-				   System.out.println("Enter Customer details");
+				   //registor new customer
+				   System.out.println("=================Enter Customer details:=================");
 				   System.out.println("fname, lname, email, password,  registrationamount,dob,serviceplans");
-				 
+				   Customer_Management cust=validateInput(sc.next(),sc.next(),sc.next(),sc.next(),sc.nextDouble(),sc.next(),sc.next(),cs);
+				   cs.add(cust);
+				   System.out.println("Customer Rigistered");
 				   break;
 			   case 2:
+				   System.out.println("==================Login=============================");
+				   System.out.println("Enter Email and password");
+				   System.out.println(loginValidation(sc.next(),sc.next(),cs));
+			       break;
+			   case 3:
+				   System.out.println("==================Customer Details======================");
+				   for(Customer_Management a:cs)
+					   System.out.println(cs);
+				   break;
+			   case 4:
 				   exit=true;
 				   break;
 			   
-			   }}
+			   }
+			   }
 			   catch(Exception e)
 			  {
 				System.out.println(e.getMessage());   
