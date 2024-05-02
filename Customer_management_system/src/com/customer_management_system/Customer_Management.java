@@ -2,7 +2,7 @@ package com.customer_management_system;
 
 import java.time.LocalDate;
 
-public class Customer_Management {
+public class Customer_Management implements Comparable<Customer_Management> {
     private static int custid;
     static {
     	custid=0;
@@ -115,7 +115,7 @@ public class Customer_Management {
 
 	@Override
 	public String toString() {
-		return "Customer_Management [fname=" + fname + ", lname=" + lname + ", email=" + email + ", password="
+		return "Customer_Management [Customer Details = \"Customer Id "+custid+"fname=" + fname + ", lname=" + lname + ", email=" + email + ", password="
 				+ password + ", registrationamount=" + registrationamount + ", dob=" + dob + ", serviceplans="
 				+ serviceplans + "]";
 	}
@@ -132,9 +132,16 @@ public class Customer_Management {
        }
        return false; 	
     }
+
+
+	@Override
+	public int compareTo(Customer_Management o) {
+		// TODO Auto-generated method stub
+		return this.email.compareTo(o.email);
+		
+	}
     
-    
-    
+ 
     
     
     

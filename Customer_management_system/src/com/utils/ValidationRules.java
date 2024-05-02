@@ -43,25 +43,7 @@ public class ValidationRules {
 		
 	}
 	
-	public static String loginValidation(String email,String pass,List<Customer_Management> cl) throws Custom_Exception
-	{
-		Customer_Management cs=new Customer_Management(email);
-		int obj=cl.indexOf(cs);
-	    if(obj == -1)
-	    {
-	    	throw new Custom_Exception("Email not Exits");
-	    }
-	    
-	    for(Customer_Management a:cl)
-	    {
-	        if(a.getPassword().equals(pass) && a.getEmail().equals(email))
-	       {
-	    	return "Login success";
-	       }
-	    }
-	    
-	    throw new Custom_Exception("Incorrect Password");
-	}
+	
 	
 
 }
